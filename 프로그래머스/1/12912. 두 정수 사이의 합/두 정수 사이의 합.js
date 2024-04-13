@@ -1,12 +1,7 @@
 function solution(a, b) {
-   let array = [];
-   if(a < b){
-   for(i=a; i<=b; i++){
-       array.push(i)
-   }
-   }
-    for(i=b; i<=a; i++){
-        array.push(i)
-    }
-   return array.reduce((acc, cur)=> acc + cur, 0)
+  let sum = 0;
+    for(i=Math.min(a,b); i<=Math.max(a,b); i++){
+        sum += i
+  }
+    return sum
 }
