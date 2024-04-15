@@ -1,14 +1,18 @@
-const input = require("fs").readFileSync("/dev/stdin").toString().split(/ |\n/g);
+const input = require("fs").readFileSync("/dev/stdin").toString().trim().split("\n");
 
-  const Max_num = Math.max(...input.map(Number));
-  const newInput = input.map((line) => line.replace("\r", ""));
-  let result = [];
+  const Max_num = input
+    .join(" ")
+    .split(" ")
+    .map(Number)
+    .sort((a, b) => b - a)[0]
+    .toString();
+
   let answer = [];
-  while (newInput.length) result.push(newInput.splice(0, 9));
 
-  result.forEach((num, index) => {
-    if (num.indexOf(Max_num.toString()) >= 0) {
-      answer = [index + 1, num.indexOf(Max_num.toString()) + 1];
+  input.forEach((num, index) => {
+    const arr = num.split(" ");
+    if (arr.indexOf(Max_num) >= 0) {
+      answer = [index + 1, arr.indexOf(Max_num) + 1];
     }
   });
 
